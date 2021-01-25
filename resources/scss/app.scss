@@ -1,0 +1,110 @@
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+//colors
+$red: rgba(234, 146, 21, 0.8);
+$white: #fff;
+.backcolorlogin {
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+.imageHe {
+    height: 200px;
+}
+
+//@media screen and (max-width: 992px) {
+//    .imageHe {
+//        height: 260px;
+//    }
+//}
+//this below code is accordion
+.acch2 {
+    color: #282f35;
+    font-family: "Josefin Sans", Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.aacp {
+    color: #666;
+    font-family: 'Malgun Gothic', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 20px;
+}
+
+.acc li {
+    list-style-type: none;
+    padding: 0;
+    margin-right: 45px;
+}
+
+.acc_ctrl {
+    background: #fff;
+    border: none;
+    border-bottom: solid 1px #f2f2f2;
+    cursor: pointer;
+    display: block;
+    outline: none;
+    padding: 2em;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.acc_ctrl:before {
+    background: #44596b;
+    content: '';
+    height: 2px;
+    margin-right: 37px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: rotate(90deg);
+    transition: all 0.2s ease-in-out;
+    width: 14px;
+}
+
+.acc_ctrl:after {
+    background: #44596b;
+    content: '';
+    height: 2px;
+    margin-right: 37px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 14px;
+}
+
+.acc_ctrl.active:before {
+    transform: rotate(0deg);
+}
+
+.acc_ctrl.active h2,
+.acc_ctrl:focus h2 {
+    position: relative;
+}
+
+.acc_panel {
+    background: #f2f2f2;
+    display: none;
+    overflow: hidden;
+}
+
+//accordion finished
+.sty:hover {
+    color: white;
+}
+
+.contentAdd {
+    overflow: hidden;
+    width: 100%;
+    word-wrap: break-word;
+    height: 80px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

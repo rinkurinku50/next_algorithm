@@ -1,0 +1,192 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <%- include('nav.ejs') %>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <!--<ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">My Dashboard</li>
+            </ol>-->
+                <!-- Icon Cards-->
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-primary o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-comments"></i>
+                                </div>
+                                <div class="mr-5">26 New Messages!</div>
+                            </div>
+                            <a class="card-footer text-white clearfix small z-1" href="#">
+                                <span class="float-left">View Details</span>
+                                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-warning o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-list"></i>
+                                </div>
+                                <div class="mr-5">11 New Tasks!</div>
+                            </div>
+                            <a class="card-footer text-white clearfix small z-1" href="#">
+                                <span class="float-left">View Details</span>
+                                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-success o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-shopping-cart"></i>
+                                </div>
+                                <div class="mr-5">123 New Orders!</div>
+                            </div>
+                            <a class="card-footer text-white clearfix small z-1" href="#">
+                                <span class="float-left">View Details</span>
+                                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-danger o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-support"></i>
+                                </div>
+                                <div class="mr-5">13 New Tickets!</div>
+                            </div>
+                            <a class="card-footer text-white clearfix small z-1" href="#">
+                                <span class="float-left">View Details</span>
+                                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Area Chart Example-->
+                <!--<div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-area-chart"></i> Area Chart Example</div>
+                <div class="card-body">
+                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Update Module</div>
+                    <div class="card-body">
+                        <% if(messages.error) { %>
+                            <div class="alert alert-danger text-red-500 font-bold text-sm">
+                                <%= messages.error %>
+                            </div>
+                            <%} else if(messages.success) { %>
+                                <div class="alert alert-success text-red-500 font-bold text-sm">
+                                    <%= messages.success %>
+                                </div>
+                                <% } %>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1 ">Please Choose Course</label>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <select id="courseData" class="form-control " id="exampleFormControlSelect1 ">
+                                        <% if(allCourses) {%>
+                                            <% allCourses.forEach(function(course) { %>
+                                     <option value="<%=course.cId %>" >
+                                <%=course.cname %>
+                                    </option>
+                                    <%   }) %>
+                                        <%}%>
+                                            </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="view-courses btn btn-block mt-2 mt-lg-0 btn-info text-white" id="viewM">Update and Delete</button>
+
+                                            </div>
+
+
+                                            <div class="col-md-12 mt-3">
+                                                <div class="row justify-content-center" id="formRow">
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!--<div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Course Id</th>
+                                                    <th>Course Name</th>
+                                                    <th>Course Catagory</th>
+                                                    <th>Course Timing</th>
+                                                    <th>Course Batch</th>
+                                                    <th>View Module</th>
+                                                </tr>
+                                            </thead>
+                                          
+                                            <tbody>
+                                                <% if(allCourses) {%>
+                                                    <% allCourses.forEach(function(course) { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= course.cId %>
+                                                            </td>
+                                                            <td>
+                                                                <%= course.cname %>
+                                                            </td>
+                                                            <td>
+                                                                <%= course.ccatagory %>
+                                                            </td>
+                                                            <td>
+                                                                <%= course.ctiming %>
+                                                            </td>
+                                                            <td>
+                                                                <%= course.batch %>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a class="view-courses btn btn-primary text-white" href="/admin/addmodules/<%= course.cId %>">View Module</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <%   }) %>
+                                                            <%}%>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>-->
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+
+
+
+
+
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <%- include('footAndOther.ejs') %>
+
+        </div>
+
+
+</body>

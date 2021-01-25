@@ -1,0 +1,317 @@
+<body>
+    <%- include('navstudent.ejs') %>
+        <!-- ? Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img src="/student/img/logo/loder.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader Start -->
+        <main>
+            <!--? slider Area Start-->
+            <section class="slider-area slider-area2">
+                <div class="slider-active">
+                    <!-- Single Slider -->
+                    <div class="single-slider slider-height2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-8 col-lg-11 col-md-12">
+                                    <div class="hero__caption hero__caption2">
+                                        <h1 data-animation="bounceIn" data-delay="0.2s">Our courses</h1>
+                                        <!-- breadcrumb Start-->
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                                <li class="breadcrumb-item"><a href="#">Services</a></li>
+                                            </ol>
+                                        </nav>
+                                        <!-- breadcrumb End -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Courses area start -->
+            <div class="courses-area section-padding40 fix">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="section-tittle text-center mb-55">
+                                <h2>Our featured courses</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="myList">
+                        <% if(allCourses) {%>
+                            <% allCourses.forEach(function(course) { %>
+                                <div class="col-lg-4 cad" style="display: none;">
+                                    <div class="properties properties2 mb-30">
+                                        <div class="properties__card">
+                                            <div class="properties__img overlay1">
+                                                <a href="/courses/module/<%= course.cId %>/<%= course.cname %>"><img class="imageHe"  src="/uploads/<%= course.cimage %>" alt=""></a>
+                                            </div>
+                                            <div class="properties__caption">
+                                                <p>
+                                                    <%= course.ccatagory %>
+                                                </p>
+                                                <h3>
+                                                    <a href="#">
+                                                        <%= course.cname   %>
+                                                    </a>
+                                                </h3>
+
+                                                <p class="contentAdd">
+                                                    <%= course.cdesc    %>
+                                                </p>
+                                                <div class="properties__footer d-flex justify-content-between align-items-center">
+                                                    <div class="restaurant-name">
+                                                        <div class="rating">
+                                                            <h3>
+                                                                <span>
+                                                                    Course Timing
+                                                                </span>
+                                                            </h3>
+                                                        </div>
+                                                        <p>
+                                                            <%= course.batch.toUpperCase() %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="price">
+                                                        <span><%= course.ctiming  %> days</span>
+                                                    </div>
+                                                </div>
+
+                                                <a href="/courses/module/<%= course.cId %>/<%= course.cname %>" class="border-btn border-btn2">Find out more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%   }) %>
+                                    <div class="col-md-12">
+                                        <div class="row justify-content-center">
+                                            <div class="col-xl-7 col-lg-8">
+                                                <div class="section-tittle text-center mt-40">
+
+                                                    <button class="border-btn sty" href="#" id="loadMore">Load More</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%} else {%>
+                                        <div class="container ">
+                                            <div class="row ">
+                                                <div class="col-md-12 text-center ">
+                                                    <h1 class="font-weight-bold" style="font-size: 45px;">No Courses Found....</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <%} %>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Courses area End -->
+            <!--? top subjects Area Start -->
+            <div class="topic-area">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="section-tittle text-center mb-55">
+                                <h2>Explore top subjects</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic1.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic2.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic3.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic4.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic5.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic6.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic7.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="/student/img/gallery/topic8.png" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">Programing</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-12">
+                            <div class="section-tittle text-center mt-20">
+                                <a href="courses.html" class="border-btn">View More Subjects</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- top subjects End -->
+            <!-- ? services-area -->
+            <div class="services-area services-area2 section-padding40">
+                <div class="container">
+                    <div class="row justify-content-sm-center">
+                        <div class="col-lg-4 col-md-6 col-sm-8">
+                            <div class="single-services mb-30">
+                                <div class="features-icon">
+                                    <img src="/student/img/icon/icon1.svg" alt="">
+                                </div>
+                                <div class="features-caption">
+                                    <h3>60+ UX courses</h3>
+                                    <p>The automated process all your website tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-8">
+                            <div class="single-services mb-30">
+                                <div class="features-icon">
+                                    <img src="/student/img/icon/icon2.svg" alt="">
+                                </div>
+                                <div class="features-caption">
+                                    <h3>Expert instructors</h3>
+                                    <p>The automated process all your website tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-8">
+                            <div class="single-services mb-30">
+                                <div class="features-icon">
+                                    <img src="/student/img/icon/icon3.svg" alt="">
+                                </div>
+                                <div class="features-caption">
+                                    <h3>Life time access</h3>
+                                    <p>The automated process all your website tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Scroll Up -->
+        <div id="back-top">
+            <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+        </div>
+        <%- include('footer.ejs') %>
+            <script>
+                $(document).ready(function() {
+                    size_li = $("#myList .cad").size();
+                    x = 3;
+                    $('#myList .cad:lt(' + x + ')').show();
+                    $('#loadMore').click(function() {
+
+
+                        x = (x + 3 <= size_li) ? x + 3 : size_li;
+                        $('#myList .cad:lt(' + x + ')').show();
+
+
+                        if (size_li == x) {
+                            $('#loadMore').hide();
+                        }
+                    });
+                    //$('#showLess').click(function() {
+                    //    x = (x - 3 < 0) ? 3 : x - 3;
+                    //    $('#myList li').not(':lt(' + x + ')').hide();
+                    //});
+                });
+            </script>
+</body>
+
+
+
+<!--<body>
+    <%- include('navstudent.ejs') %>
+
+    <%- include('footer.ejs') %>
+</body>-->

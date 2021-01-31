@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../connection');
 
 
-const Courses = sequelize.define('Courses', {
+const Courses = sequelize.define('courses', {
     cId: {
         allowNull: false,
         type: Sequelize.UUID,

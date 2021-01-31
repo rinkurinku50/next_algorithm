@@ -14,9 +14,10 @@ const coursesStudentController = require('../app/http/controller/studentControll
 const moduleStudentController = require('../app/http/controller/studentController/moduleStudentController');
 const aboutStudentController = require('../app/http/controller/studentController/aboutStudentController');
 const contactStudentController = require('../app/http/controller/studentController/contactStudentController');
+const authMiddleware = require('../app/http/middleware/passportMiddleware');
 
 
-function initRoutes(app) {
+function initRoutes(app,passport) {
 
     var storage = multer.diskStorage({
         destination: function(req, file, cb) {
@@ -42,12 +43,20 @@ function initRoutes(app) {
     // admin routes
 
     //all admin routes
-    app.get('/admin', loginController().index);
-    app.get('/admin/dashboard', dashboardController().index);
-
+    app.get('/admin',authMiddleware().ensureLoginAuthenticated,loginController().index);
+    // app.post('/admin', loginController().resData);
+    app.post('/admin', passport.authenticate('local', { successRedirect: '/admin/dashboard',
+    failureRedirect: '/admin'}));
+    app.get('/admin/dashboard',authMiddleware().ensureAuthenticated, dashboardController().index);
+    app.get('/logout', function(req, res){
+        console.log('logging out');
+        req.logout();
+        res.redirect('/admin');
+      });
+    
     //add course
-    app.get('/admin/courses', coursesController().index);
-    app.get('/admin/addcourses', addCorsesController().index);
+    app.get('/admin/courses',authMiddleware().ensureAuthenticated, coursesController().index);
+    app.get('/admin/addcourses',authMiddleware().ensureAuthenticated, addCorsesController().index);
     app.post('/admin/addcourses', upload.single('cimage'), addCorsesController().addcourses);
 
     //update course
@@ -56,23 +65,23 @@ function initRoutes(app) {
 
 
     //delete course
-    app.get('/admin/courses/:id', coursesController().deleteCourse);
+    app.get('/admin/courses/:id',authMiddleware().ensureAuthenticated, coursesController().deleteCourse);
 
 
     //show module
-    app.get('/admin/modules', modulesController().index);
-    app.get('/admin/modules/:id', modulesController().getAllModule);
+    app.get('/admin/modules',authMiddleware().ensureAuthenticated, modulesController().index);
+    app.get('/admin/modules/:id',authMiddleware().ensureAuthenticated, modulesController().getAllModule);
 
     //add module route
-    app.get('/admin/addmodules', addModulesController().index);
-    app.post('/admin/addmodules/:id', addModulesController().addmodule);
+    app.get('/admin/addmodules',authMiddleware().ensureAuthenticated, addModulesController().index);
+    app.post('/admin/addmodules/:id',addModulesController().addmodule);
     app.post('/admin/addmoduleexist/:id', addModulesController().addmoduleexist);
-    app.get('/admin/findaddmodules/:id', addModulesController().getAllModule);
+    app.get('/admin/findaddmodules/:id',authMiddleware().ensureAuthenticated, addModulesController().getAllModule);
 
     //update module route
-    app.get('/admin/updatemodule', updateModuleController().index);
-    app.get('/admin/findmodules/:id', updateModuleController().getAllModule);
-    app.post('/admin/updatemodule/:id', updateModuleController().update);
+    app.get('/admin/updatemodule',authMiddleware().ensureAuthenticated, updateModuleController().index);
+    app.get('/admin/findmodules/:id',authMiddleware().ensureAuthenticated, updateModuleController().getAllModule);
+    app.post('/admin/updatemodule/:id',authMiddleware().ensureAuthenticated, updateModuleController().update);
 
 
     //

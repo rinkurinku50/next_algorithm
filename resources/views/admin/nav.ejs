@@ -174,8 +174,11 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                <form action="/logout" id="logoutform">
+                    <a class="nav-link"  onclick="document.getElementById('logoutform').submit();"  data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout</a>  
+                </form>
+                
             </li>
         </ul>
     </div>

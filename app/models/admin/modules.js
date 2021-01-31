@@ -4,7 +4,7 @@ const sequelize = require('../connection');
 
 
 
-const Modules = sequelize.define('Modules', {
+const Modules = sequelize.define('modules', {
     mId: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,

@@ -41,7 +41,7 @@ function addCorsesController() {
 
                     }
                 } catch (error) {
-                    req.flash('error', 'error in database....');
+                    req.flash('error', `error in database.... ${error}`);
 
                 }
 
